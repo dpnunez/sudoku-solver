@@ -6,5 +6,6 @@
 int main() {
 	sudoku *game;
 	leSudoku(game);
+	imprimeGame(game);
 	return 0;
 }

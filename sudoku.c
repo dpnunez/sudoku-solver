@@ -31,7 +31,7 @@ void leSudoku(sudoku *game) {
     }
   }
 
-  if (gamePosition < 81) {
+  if (game->tamanho < 81) {
     printf("Invalid game!");
     exit(1);
   }
@@ -44,16 +44,28 @@ void inserirCelula(sudoku *game, int valor, bool primeiro) {
 	novaCelula->proximo=NULL;
 	novaCelula->anterior=game->fim;
 
-	game->fim->proximo=novaCelula;
-	game->fim=novaCelula;
-	game->tamanho++;
-
-	if(primeiro)
+	if (primeiro) {
 		game->inicio=novaCelula;
+		game->fim=novaCelula;
+	} else {
+		game->fim->proximo=novaCelula;
+		game->fim=novaCelula;
+	}
+	game->tamanho++;
 }
 
 void inicializaLista(sudoku *game) {
 	game->fim=NULL;
 	game->inicio=NULL;
 	game->tamanho=0;
+}
+
+void imprimeGame(sudoku *game) {
+	celula *atual;
+	atual=game->inicio;
+
+	while(atual->proximo != NULL) {
+		printf("%d ", atual->valor);
+		atual=atual->proximo;
+	}
 }
