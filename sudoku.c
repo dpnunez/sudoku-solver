@@ -7,10 +7,7 @@ void leSudoku(sudoku *game) {
   FILE *fp;
   char ch;
 	bool primeiro = true;
-  int
-    gameNumbers[81] = {0}, 
-    parsedNumber,
-    gamePosition = 0;
+  int parsedNumber,
 	
   fp = fopen("game1.txt", "r");
 
